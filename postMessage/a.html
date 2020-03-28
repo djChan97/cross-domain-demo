@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>a.html</title>
+</head>
+<body>
+<h1>a.html</h1>
+<iframe src="http://localhost:8081/b.html" style='display: none;'></iframe>
+<script>
+	window.onload = function () {
+		let targetOrigin = "http://localhost:8081";
+		window.frames[0].postMessage("a.html 的 data!", targetOrigin);
+	};
+	window.addEventListener("message", function (e) {
+		console.log("a.html 接收到的消息:", e.data);
+	});
+</script>
+</body>
+</html>
